@@ -61,7 +61,7 @@ try {
         throw new Exception("");
     }
     
-    // since the username is not aleady registered, create
+    // since the username is not already registered, create
     // a new User object, add it to the database using the
     // UserTable object, and store it in the session array
     // using the key 'user'
@@ -75,13 +75,13 @@ try {
     // will not be resubmitting the login form.
     // 
     // require 'home.php';
-    header('Location: index.php');
+    header('Location: dashboard.php');
 }
     catch (Exception $ex) {
         // if an exception occurs then extract the message
         // from the exception and send the user the
         // registration form
         $errorMessage = $ex->getMessage();
-        require 'login_form.php';
+        require 'index.php';
     }
 ?>
