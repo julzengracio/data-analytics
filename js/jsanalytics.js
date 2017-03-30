@@ -366,8 +366,10 @@ function displayChartGeographic(videoId, response, title) {
     chart.draw(chartDataTable, {
     // Additional options can be set if desired.
     // See https://developers.google.com/chart/interactive/docs/reference#visdraw
-    is3D: false,
-    title: 'Total Views: ' + videoId
+        is3D: false,
+        title: 'Total Views: ' + videoId,
+        colorAxis: {colors: ['#2ecc71','#e67e22','#c0392b']},
+        datalessRegionColor: '#bdc3c7'
     });
     } else {
     displayMessage('No data available for video ' + videoId);

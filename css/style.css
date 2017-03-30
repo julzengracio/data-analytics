@@ -478,3 +478,14 @@ nav.sidebar.navbar {
 #analytics {
     display: none;
 }
+
+/*bar chart*/
+#demograph {
+    position: relative;
+}
+
+#demograph::before {
+    content: "";
+    position: absolute;
+    display: block;
+}

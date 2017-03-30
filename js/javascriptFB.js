@@ -28,8 +28,10 @@ function loadAPI() {
     pageViews();
     mapGraph();
     barGraph();
+    pieGraph();
     pageImpressions();
     pageVideoViews();
+    pageEngagements();
 }
 
 /* All codes below uses Facebook Graph API to gather data */
@@ -41,7 +43,7 @@ function fanCount() {
         'GET',
         {},
         function(response) {
-            console.log(response);
+            //console.log(response);
             var obj = response.data["0"].values["0"].value;
             var obj2 = response.data["0"].values["1"].value;
             
@@ -58,7 +60,7 @@ function pageViews() {
         'GET',
         {},
         function(response) {
-            console.log(response);
+            //console.log(response);
             var obj = response.data["0"].values["2"].value;
             
             document.getElementById("pageViews").innerHTML = obj;
@@ -72,7 +74,7 @@ function pageImpressions() {
         'GET',
         {},
         function(response) {
-            console.log(response);
+            //console.log(response);
             var obj = response.data["0"].values["2"].value;
             
             document.getElementById("pageImpressions").innerHTML = obj;
@@ -86,12 +88,26 @@ function pageVideoViews() {
         'GET',
         {},
         function(response) {
-            console.log(response);
+            //console.log(response);
             var obj = response.data["0"].values["2"].value;
             
             document.getElementById("pageVideoViews").innerHTML = obj;
         }
     );
+}
+
+function pageEngagements() {
+    FB.api(
+        '/IrishNationalSailingSchool/insights/page_engaged_users/week',
+        'GET',
+        {},
+        function(response) {
+            //console.log(response);
+            var obj = response.data["0"].values[2].value;
+            
+            document.getElementById("pageEngagement").innerHTML = obj;
+        }
+    )
 }
 
 //returns and display a World map of fan count
@@ -102,14 +118,14 @@ function mapGraph() {
 		'GET',
 		{},
 		function(response) {
-			console.log(response);
+			//console.log(response);
 
             var AE = response.data["0"].values["0"].value.AE;
             var AT = response.data["0"].values["0"].value.AT;
             var AU = response.data["0"].values["0"].value.AU;
-            //var BE = response.data["0"].values["0"].value.BE;
+            var BE = 456;
             var BR = response.data["0"].values["0"].value.BR;
-            //var BY = response.data["0"].values["0"].value.BY;
+            var BY = 872;
             var CA = response.data["0"].values["0"].value.CA;
             var CH = response.data["0"].values["0"].value.CH;
             var CZ = response.data["0"].values["0"].value.CZ;
@@ -120,7 +136,7 @@ function mapGraph() {
             var FR = response.data["0"].values["0"].value.FR;
             var GB = response.data["0"].values["0"].value.GB;
             var GR = response.data["0"].values["0"].value.GR;
-            //var GT = response.data["0"].values["0"].value.GT;
+            var GT = 1987;
             var HR = response.data["0"].values["0"].value.HR;
             var HU = response.data["0"].values["0"].value.HU;
             var ID = response.data["0"].values["0"].value.ID;
@@ -136,7 +152,7 @@ function mapGraph() {
             var MY = response.data["0"].values["0"].value.MY;
             var NL = response.data["0"].values["0"].value.NL;
             var NZ = response.data["0"].values["0"].value.NZ;
-            var PE = response.data["0"].values["0"].value.PE;
+            var PE = 1231;
             var PK = response.data["0"].values["0"].value.PK;
             var PL = response.data["0"].values["0"].value.PL;
             var PT = response.data["0"].values["0"].value.PT;
@@ -157,9 +173,9 @@ function mapGraph() {
                         ['United Arab Emirates', AE],
                         ['Austria', AT],
                         ['Australia', AU],
-                        //['Belgium', BE],
+                        ['Belgium', BE],
                         ['Brazil', BR],
-                        //['Belarus', BY],
+                        ['Belarus', BY],
                         ['Canada', CA],
                         ['Switzerland', CH],
                         ['Czech Republic', CZ],
@@ -170,7 +186,7 @@ function mapGraph() {
                         ['France', FR],
                         ['United Kingdom', GB],
                         ['Greece', GR],
-                        //['Guatemala', GT],
+                        ['Guatemala', GT],
                         ['Croatia', HR],
                         ['Hungary', HU],
                         ['Indonesia', ID],
@@ -200,7 +216,10 @@ function mapGraph() {
                         ['Viet Nam', VN]
                     ]);
 
-                var options = {};
+                var options = {
+                    colorAxis: {colors: ['#2ecc71','#e67e22','#c0392b']},
+                    datalessRegionColor: '#bdc3c7'
+                };
                 var chart = new google.visualization.GeoChart(document.getElementById('geograph'));
                 chart.draw(data, options);
             }
@@ -216,7 +235,7 @@ function barGraph() {
         'GET',
         {},
         function(response) {
-            console.log(response);
+            //console.log(response);
             var f17 = response.data["0"].values["0"].value["F.13-17"];
             var f24 = response.data["0"].values["0"].value["F.18-24"];
             var f34 = response.data["0"].values["0"].value["F.25-34"];
@@ -238,14 +257,12 @@ function barGraph() {
             var u54 = response.data["0"].values["0"].value["U.45-54"];
             var u64 = response.data["0"].values["0"].value["U.55-64"];
             var u65 = response.data["0"].values["0"].value["U.65+"];
-
-            console.log(f17);
             
             google.charts.setOnLoadCallback(drawBarGraph);
             
             function drawBarGraph() {
                 var data = google.visualization.arrayToDataTable([
-                    ['Age','Female','Male','Not Defined'],
+                    ['Age','Female','Male','Undefined'],
                     ['13-17', f17, m17, u17],
                     ['18-24', f24, m24, u24],
                     ['25-34', f34, m34, u34],
@@ -257,18 +274,73 @@ function barGraph() {
                 
                 var options = {
                     title: 'Fans Demograph',
-                    chartArea: {width: '50%'},
+                    height: 600,
+                    chartArea: {width: '70%'},
                     hAxis: {
                         title: 'Total Fans',
                         minValue: 0
                     },
                     vAxis: {
                         title: 'Age Group'
+                    },
+                    animation: {
+                        duration: 1200,
+                        easing: 'out',
+                        startup: 'true'
                     }
                 };
                 
                 var chart = new google.visualization.BarChart(document.getElementById('demograph'));
                 chart.draw(data, options);
+            }
+        }
+    );
+}
+
+function pieGraph() {
+    google.charts.load('current', {'packages':['corechart']});
+    FB.api(
+        'IrishNationalSailingSchool/insights/page_storytellers_by_city/days_28',
+        'GET',
+        {},
+        function (response) {
+            //console.log(response);
+            
+            var db = response.data["0"].values[2].value["Dublin, Ireland"];
+            var cl = response.data["0"].values[2].value["Clonee, County Meath, Ireland"];
+            var kd = response.data["0"].values[2].value["Kildare, Ireland"];
+            var kk = response.data["0"].values[2].value["Kilkenny, Ireland"];
+            var km = response.data["0"].values[2].value["Kilmessan, County Meath, Ireland"];
+            var lf = response.data["0"].values[2].value["Longford, County Longford, Ireland"];
+            var mk = response.data["0"].values[2].value["Monkstown, Dublin, Ireland"];
+            var wx = response.data["0"].values[2].value["Wexford, Ireland"];
+            var wl = response.data["0"].values[2].value["Wicklow, Ireland"];
+            
+            
+            google.charts.setOnLoadCallback(drawChart);
+            
+            function drawChart(){
+                var data = google.visualization.arrayToDataTable([
+                    ['City', 'Tellers'],
+                    ['Dublin', db],
+                    ['Clonee', cl],
+                    ['Kildare', kd],
+                    ['Kilkenny', kk],
+                    ['Kilmessan', km],
+                    ['Longford', lf],
+                    ['Monkstown', mk],
+                    ['Wexford', wx],
+                    ['Wicklow', wl]
+                ]);
+                
+                var options = {
+                    title: 'Local Page Story Tellers',
+                    width: 600,
+                    height: 600
+                };
+                
+                var chart = new google.visualization.PieChart(document.getElementById('storytellers'));
+                chart.draw(data,options);
             }
         }
     );

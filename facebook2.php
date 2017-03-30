@@ -96,7 +96,7 @@
                         </div>
                     </li>
                     <li><a href="dashboard.php">Dashboard Home<span style="font-size:16px;" class="pull-right hidden-xs showopacity"><i class="fa fa-tachometer" aria-hidden="true"></i></span></a></li>
-                    <li class="active"><a href="facebook.php">Facebook<span style="font-size:16px;" class="pull-right hidden-xs showopacity"><i class="fa fa-facebook-official" aria-hidden="true"></i></span></a></li>
+                    <li class="active"><a href="facebook2.php">Facebook<span style="font-size:16px;" class="pull-right hidden-xs showopacity"><i class="fa fa-facebook-official" aria-hidden="true"></i></span></a></li>
                     <li><a href="youtube.php">YouTube<span style="font-size:16px;" class="pull-right hidden-xs showopacity"><i class="fa fa-youtube-play" aria-hidden="true"></i></span></a></li>
                 </ul>
                 <ul class="nav navbar-nav navFunctions">
@@ -106,11 +106,19 @@
         </div>
     </nav>
     <!--SIDEBAR END-->
+    <!--iFrame Start-->
+    <div class="container-fluid">
+        <div class="embed-responsive embed-responsive-16by9">
+            <iframe class="embed-responsive-item" src="facebook_iframe.php"></iframe>
+        </div>
+    </div>
+    <!--iFrame End-->
     <!--MAIN BODY START-->
-    <div class="main container-fluid">
-        <!-- Content Here -->
+    <!--    <div class="main container-fluid">-->
+    <!-- Content Here -->
+    <!--
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div class="col-lg-5 col-lg-offset-3 fbLoginBox">
+            <div class="col-lg-5 fbLoginBox">
                 <div class="col-lg-12">
                     <h1>Click the button below to link your Facebook Page</h1>
                     <div class="col-lg-6">
@@ -122,9 +130,57 @@
                 </div>
             </div>
         </div>
-        <!--MAIN BODY END-->
+        <div id="analytics">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sumFb">
+                <div class="pageFans col-lg-2">
+                    <p>Page Fans Today:</p>
+                <div id="pageFansB" class="sumResult"></div>
+                </div>
+                <div class="pageFansBefore col-lg-2">
+                    <p>Page Fans Yesterday:</p>
+                    <div id="pageFansA" class="sumResult"></div>
+                </div>
+                <div class="pageViews col-lg-2">
+                    <p>Page Views(Week):</p>
+                    <div id="pageViews" class="sumResult"></div>
+                </div>
+                <div class="pageViews col-lg-2">
+                    <p>Page Impressions(Week):</p>
+                    <div id="pageImpressions" class="sumResult"></div>
+                </div>
+                <div class="pageViews col-lg-2">
+                    <p>Page Video Views(Week):</p>
+                    <div id="pageVideoViews" class="sumResult"></div>
+                </div>
+                <div class="pageViews col-lg-2">
+                    <p>Page Views(Week):</p>
+                    <div id="pageViews" class="sumResult"></div>
+                </div>
+            </div>
+-->
+    <!--Start of graph items-->
+    <!--
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="geoGraph col-lg-6 fbGraphItem">
+                    <h1>Geographic Views of Fans:</h1>
+                    <div id="geograph"></div>
+                </div>
+                <div class="demoGraph col-lg-6 fbGraphItem"> 
+                    <h1>Demographic Views of Fans:</h1>                
+                    <div id="demograph"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+-->
+    <!--MAIN BODY END-->
+    <!--
+    <main id="page-content-wrapper" role="main">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> </div>
+    </main>
     </div>
     </div>
+-->
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->

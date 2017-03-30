@@ -91,13 +91,15 @@
                             <div class="col-lg-4 no_padding"> <img src="http://www.wheretotonight.com/melbourne/images/empty_profile.png" class="img-responsive img-circle"> </div>
                             <div class="col-lg-8 no_padding">
                                 <h1>Welcome,</h1>
-                                <p>User</p>
+                                <p>Irish National Sailing & Powerboat School</p>
                             </div>
                         </div>
                     </li>
-                    <li class="active"><a href="dashboard.php">Dashboard Home<span style="font-size:16px;" class="pull-right hidden-xs showopacity"><i class="fa fa-tachometer" aria-hidden="true"></i></span></a></li>
-                    <li><a href="facebook.php">Facebook<span style="font-size:16px;" class="pull-right hidden-xs showopacity"><i class="fa fa-facebook-official" aria-hidden="true"></i></span></a></li>
-                    <li><a href="youtube.php">YouTube<span style="font-size:16px;" class="pull-right hidden-xs showopacity"><i class="fa fa-youtube-play" aria-hidden="true"></i></span></a></li>
+                    <li><a onclick="showDashboardiframe()">Dashboard Home<span style="font-size:16px;" class="pull-right hidden-xs showopacity"><i class="fa fa-tachometer" aria-hidden="true"></i></span></a></li>
+                    
+                    <li><a onclick="showFacebookiframe()">Facebook<span style="font-size:16px;" class="pull-right hidden-xs showopacity"><i class="fa fa-facebook-official" aria-hidden="true"></i></span></a></li>
+                    
+                    <li><a onclick="showYoutubeiframe()">YouTube<span style="font-size:16px;" class="pull-right hidden-xs showopacity"><i class="fa fa-youtube-play" aria-hidden="true"></i></span></a></li>
                 </ul>
                 <ul class="nav navbar-nav navFunctions">
                     <?php require 'utils/toolbar_dashboard.php'; ?>
@@ -106,28 +108,16 @@
         </div>
     </nav>
     <!--SIDEBAR END-->
-    <!--MAIN BODY START-->
-    <div class="main container-fluid">
-        <!-- Content Here -->
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 dashHome1">
-            <div class="col-lg-3 col-lg-offset-1">
-                <img src="img/waver_cropped.png" class="img-responsive">
-            </div>
-            <div class="col-lg-6">
-                <h1>All your analytics, all in one place..</h1>
-                <p>
-                    Use this dashboard to link up all your Socail Media Accounts to see...
-                </p> 
-                <ul>
-                    <li>What effect you online content is making on your audience</li>
-                    <li>Where is your target market</li>
-                    <li>Where/what age is your demographic</li>
-                    <li>And much more...</li>
-                </ul>
-            </div>
+    <!--iFrame Start-->
+    <div class="container-fluid">
+        <div class="embed-responsive embed-responsive-16by9" >
+            <iframe  class="embed-responsive-item" src="dashboard_iframe.php" id="dashboard_iframe"></iframe>
+            <iframe class="embed-responsive-item" src="facebook_iframe.php" id="facebook_iframe" style="display: none;"></iframe>
+            <iframe class="embed-responsive-item" src="youtube_iframe.php" id="youtube_iframe" style="display: none;"></iframe>
         </div>
-        <!--MAIN BODY END-->
     </div>
+    <!--iFrame End-->
+    
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
