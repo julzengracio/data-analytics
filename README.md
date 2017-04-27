@@ -13,6 +13,13 @@ However we this project has a lot of complications:
     We have been using my partner's Facebook account for testing.</li>
 <li>Since it is using Social Media APIs, It only works on a local host that is listening to port 80.<br>
     Trying to make it work while listening to other ports will require me to add it as 'Whitelist' on the developer app of the social media.<br>
-    I have tried this with Facebook (which can now listen to port:8080) but no success in Google.
+    I have tried this with Facebook (which can now listen to port:8080) but no success in Google.</li>
+</ul>
+
+<p>
+To Make this project run, you need to create a database called 'year3project'. Then import 'users.sql' file in the database.<br>
+Facebook will only work with my partner's Facebook account. YouTube however, will work on any Google account with a youtube channel.
+</p>
+    
 
 
