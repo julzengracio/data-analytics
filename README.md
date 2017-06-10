@@ -19,6 +19,7 @@ However we this project has a lot of complications:
 <p>
 To Make this project run, you need to create a database called 'year3project'. Then import 'users.sql' file in the database.<br>
 Facebook will only work with my partner's Facebook account. YouTube however, will work on any Google account with a youtube channel.
+This project is not fully designed since we didn't have extra time to make it look better.
 </p>
     
 
