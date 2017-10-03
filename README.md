@@ -21,6 +21,10 @@ To Make this project run, you need to create a database called 'year3project'. T
 Facebook will only work with my partner's Facebook account. YouTube however, will work on any Google account with a youtube channel.
 This project is not fully designed since we didn't have extra time to make it look better.
 </p>
+
+<p>
+    *This project may not be fully functional as APIs are updating frequently and codes may need to be re-written.
+</p>
     
 
 
